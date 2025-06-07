@@ -51,13 +51,13 @@ func (s *Service) ValidateRootFolder(f *file.AssetFile) error {
 }
 
 func (s *Service) ValidateChainFolder(f *file.AssetFile) error {
-	file, err := os.Open(f.Path())
+	dir, err := os.Open(f.Path())
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer dir.Close()
 
-	fileInfo, err := file.Stat()
+	fileInfo, err := dir.Stat()
 	if err != nil {
 		return err
 	}
@@ -69,7 +69,7 @@ func (s *Service) ValidateChainFolder(f *file.AssetFile) error {
 		compErr.Append(err)
 	}
 
-	dirFiles, err := file.ReadDir(0)
+	dirFiles, err := file.ReadDir(f.Path())
 	if err != nil {
 		return err
 	}
