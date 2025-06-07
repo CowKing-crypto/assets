@@ -21,8 +21,8 @@ type TokenInfo struct {
 	HoldersCount int
 }
 
-func GetTokenInfo(tokenID, tokentType string) (*TokenInfo, error) {
-	switch strings.ToLower(tokentType) {
+func GetTokenInfo(tokenID, tokenType string) (*TokenInfo, error) {
+	switch strings.ToLower(tokenType) {
 	case "erc20":
 		return GetTokenInfoForERC20(tokenID)
 	case "bep20":
